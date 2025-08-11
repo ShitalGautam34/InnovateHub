@@ -1,0 +1,133 @@
+/* --- General Container --- */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-block: 6rem;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background: url(../assets/auth_bg.svg) repeat-x;
+  background-size: cover;
+}
+
+/* --- Intro Section --- */
+.intro {
+  color: white;
+  text-align: center;
+}
+
+.intro-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+/* --- Form Styling --- */
+.login-form {
+  padding: 2.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 3px 10px 15px 3px rgba(255, 255, 255, 0.3);
+  animation: container-load 0.7s forwards ease-in-out;
+}
+
+@keyframes container-load {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+/* --- Input Fields --- */
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #4b5563;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.field input::placeholder {
+  color: #9ca3af;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #3b82f6; /* Accent color */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* --- Buttons --- */
+.btn {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #2563eb; /* Accent color */
+  color: #f9fafb;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 2s ease, scale 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #1d50bd;
+  scale: 1.02;
+}
+
+/* --- Footer and Social Login --- */
+.footer {
+  text-align: center;
+  margin: 1rem 0;
+  margin-bottom: 0;
+}
+
+.footer p {
+  margin-bottom: 1rem;
+}
+
+.with_google {
+  width: 100%;
+  padding: 0.75rem;
+  color: #2563eb;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #4b5563;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.with_google:hover {
+  background: #2563eb;
+  color: white;
+}

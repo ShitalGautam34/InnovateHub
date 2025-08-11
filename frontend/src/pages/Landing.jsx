@@ -5,38 +5,11 @@ import { RiRefund2Fill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import landing_image from "../assets/landing_img.png";
+import Header from "../components/Header";
 
 const Landing = () => {
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Explore Startups", href: "/explore" },
-    { name: "Post Ideas", href: "/post" },
-    { name: "Funders", href: "/funders" },
-  ];
-
   return (
     <div className="wrapper">
-      <header>
-        <div className="logo">InnovateHub</div>
-        <nav>
-          {navLinks.map((link) => {
-            return (
-              <Link to={link.href} key={link.name} className="nav_link">
-                {link.name}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="auth">
-          <Link to="/login" className="auth_link">
-            Login
-          </Link>
-          <Link to="/signup" className="auth_link">
-            <button className="auth_btn">Sign Up</button>
-          </Link>
-        </div>
-      </header>
-
       <main className="landing">
         <section className="left_section">
           <h1 className="landing_title">Pitch. Validate. Fund. All Online.</h1>
