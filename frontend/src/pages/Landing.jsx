@@ -3,11 +3,11 @@ import "../styles/landing.css";
 import { GoLightBulb } from "react-icons/go";
 import { RiRefund2Fill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import landing_image from "../assets/landing_img.png";
-import Header from "../components/Header";
 
 const Landing = () => {
+  const navigate = useNavigate();
   return (
     <div className="wrapper">
       <main className="landing">
@@ -19,8 +19,16 @@ const Landing = () => {
             place.
           </h3>
           <div className="cta_btns">
-            <button>Explore Startups</button>
-            <button>Post Ideas</button>
+            <button onClick={() => navigate("/explore")}>
+              Explore Startups
+            </button>
+            <button
+              onClick={() => {
+                navigate("/post");
+              }}
+            >
+              Post Ideas
+            </button>
           </div>
         </section>
         <section className="right_section">
@@ -68,17 +76,6 @@ const Landing = () => {
           </div>
         </div>
       </section>
-
-      <footer className="footer">
-        <div className="footer_content">
-          <p>© {new Date().getFullYear()} InnovateHub. All rights reserved.</p>
-          <div className="footer_links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

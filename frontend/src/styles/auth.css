@@ -4,16 +4,14 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-block: 6rem;
-  height: 100vh;
+  padding-top: 6rem;
+  min-height: 100vh;
   font-family: "Inter", sans-serif;
-  background: url(../assets/auth_bg.svg) repeat-x;
-  background-size: cover;
 }
 
 /* --- Intro Section --- */
 .intro {
-  color: white;
+  color: #1d50bd;
   text-align: center;
 }
 
@@ -29,10 +27,8 @@
   border-radius: 1rem;
   width: 100%;
   max-width: 420px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 3px 10px 15px 3px rgba(255, 255, 255, 0.3);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
   animation: container-load 0.7s forwards ease-in-out;
 }
 
@@ -58,17 +54,18 @@
   font-weight: 500;
 }
 
-.field input {
+.field input,
+.field select {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid #4b5563;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #dfe1e6;
+  background-color: #fafbfc;
+  font-size: 16px;
+  color: #172b4d;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box; /* Important for padding */
 }
-
 .field input::placeholder {
   color: #9ca3af;
 }

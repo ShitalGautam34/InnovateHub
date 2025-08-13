@@ -3,6 +3,7 @@ import "../styles/explore.css";
 import { FiFilter } from "react-icons/fi";
 import { FiTrendingUp } from "react-icons/fi";
 import Card from "../components/Card";
+import { startupIdeas } from "../be_test/ideas.js";
 
 const Explore = () => {
   return (
@@ -31,9 +32,11 @@ const Explore = () => {
           Top Rated
         </button>
       </div>
-      <Card />
-      <Card />
-      <Card />
+      <div className="card-container">
+        {startupIdeas.map((idea) => {
+          return <Card key={idea.id} idea={idea} />;
+        })}
+      </div>
     </div>
   );
 };
