@@ -22,10 +22,3 @@ mongoose.connection.once("open", () => {
 mongoose.connection.on("error", (error) => {
   console.error("MongoDB connection error:", error);
 });
-
-import admin from "firebase-admin";
-import serviceAccount from "./innovatehub-77af5-firebase-adminsdk-fbsvc-940a30cb36.json.json";
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
