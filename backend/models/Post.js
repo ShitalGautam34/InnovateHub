@@ -20,16 +20,16 @@ const PostSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  foundersOnly: {
+  fundersOnly: {
     type: Boolean,
     default: false,
   },
-
   ytURL: {
     type: String,
   },
-  imageURL: {
-    type: String,
+  thumbnailId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Thumbnail",
   },
   rating: {
     type: Number,
