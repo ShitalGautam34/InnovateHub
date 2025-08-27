@@ -4,18 +4,16 @@ import { supabase } from "./supabaseClient";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Full profile from users table
+  const [user, setUser] = useState(null); // Use auth user metadata
   const [loading, setLoading] = useState(true);
 
-  // Fetch profile on session change
+  // Load user from session on change
   useEffect(() => {
     const getSession = async () => {
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      if (session?.user) {
-        await fetchUserProfile(session.user.id);
-      }
+      if (session?.user) setUser(session.user);
       setLoading(false);
     };
     getSession();
@@ -23,7 +21,7 @@ export const AuthProvider = ({ children }) => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
         if (session?.user) {
-          await fetchUserProfile(session.user.id);
+          setUser(session.user);
         } else {
           setUser(null);
         }
@@ -33,15 +31,7 @@ export const AuthProvider = ({ children }) => {
     return () => authListener.subscription.unsubscribe();
   }, []);
 
-  const fetchUserProfile = async (userId) => {
-    const { data, error } = await supabase
-      .from("users")
-      .select("*")
-      .eq("id", userId)
-      .single();
-    if (error) console.log("error in AuthContext/fetchUserProfile:", error);
-    if (!error) setUser(data);
-  };
+  // No users table; metadata lives in session.user.user_metadata
 
   const signOut = async () => {
     await supabase.auth.signOut();

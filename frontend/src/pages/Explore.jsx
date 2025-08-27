@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/explore.css";
 import { FiFilter } from "react-icons/fi";
 import { FiTrendingUp } from "react-icons/fi";
 import Card from "../components/Card";
-import { startupIdeas } from "../be_test/ideas.js";
+// import { startupIdeas } from "../be_test/ideas.js";
+import { getPosts } from "../auth/getPosts.js";
 
 const Explore = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getPosts();
+      setPosts(posts);
+      console.log(posts);
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <div className="explore">
       <div className="intro">
@@ -33,9 +45,13 @@ const Explore = () => {
         </button>
       </div>
       <div className="card-container">
+        {posts.map((idea) => (
+          <Card key={idea.id} idea={idea} />
+        ))}
+        {/* <p>from backend test</p>
         {startupIdeas.map((idea) => {
           return <Card key={idea.id} idea={idea} />;
-        })}
+        })} */}
       </div>
     </div>
   );

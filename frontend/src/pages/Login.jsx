@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import "../styles/auth.css";
-import { loginUser } from "../auth/userAuth";
+import { loginUser, loginWithGoogle } from "../auth/userAuth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,11 +16,13 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = user;
-    const { error } = loginUser({ email, password });
-    if (error) alert(error.message);
-    else {
+    const res = loginUser({ email, password });
+    if (res?.error) {
+      alert(error.message);
+    } else {
       alert("Login successful!");
       navigate("/");
+      setUser(null);
     }
   };
 
@@ -55,7 +57,7 @@ const Login = () => {
         </button>
         <div className="footer">
           <p>Or continue with</p>
-          <button className="with_google">
+          <button className="with_google" onClick={loginWithGoogle}>
             <FaGoogle />
             Google
           </button>

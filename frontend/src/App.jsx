@@ -3,10 +3,12 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Landing from "./pages/Landing";
 import Explore from "./pages/Explore";
+import Dashboard from "./pages/Dashboard";
 import PostUpload from "./pages/PostUpload";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
+import { useAuth } from "./AuthContext";
 
 const App = () => {
   const location = useLocation();
@@ -27,6 +29,15 @@ const App = () => {
     navLinks = [];
   }
 
+  const { user } = useAuth();
+  if (user) {
+    navLinks = [
+      { name: "Dashboard", href: "/dashboard" },
+      { name: "Explore Startups", href: "/explore" },
+      { name: "Post Ideas", href: "/post" },
+      { name: "Funders", href: "/funders" },
+    ];
+  }
   return (
     <div
       style={{
@@ -39,6 +50,7 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={user ? <Dashboard /> : <Login />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/post" element={<PostUpload />} />
       </Routes>

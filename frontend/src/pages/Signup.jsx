@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import "../styles/auth.css";
-import { signUpUser } from "../auth/userAuth";
+import { signUpUser, signUpWithGoogle } from "../auth/userAuth";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({ role: "founder" });
 
   const handleChange = (e) => {
@@ -14,19 +17,20 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password, username, role } = user;
-    const { profile, error } = await signUpUser({
+    const res = await signUpUser({
       email,
       password,
       username,
       role,
     });
-    console.log(profile);
-    if (error) {
-      alert(error.message);
+    if (res?.error) {
+      alert(error);
     } else {
       alert(
         "Signup successful! Please check your email to confirm your account."
       );
+      navigate("/");
+      setUser({ role: "founder" });
     }
   };
 
@@ -86,7 +90,7 @@ const Signup = () => {
         </button>
         <div className="footer">
           <p>Or continue with</p>
-          <button className="with_google">
+          <button className="with_google" onClick={signUpWithGoogle}>
             <FaGoogle />
             Google
           </button>

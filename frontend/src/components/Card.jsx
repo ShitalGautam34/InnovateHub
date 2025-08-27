@@ -9,11 +9,12 @@ const Card = ({ idea }) => {
     <div className="project-card">
       <div className="card-header">
         <img
-          src={idea.thumbnail}
+          src={idea.thumbnail_url || idea.thumbnail || null}
           alt="Thumbnail Image"
           className="card-image"
         />
-        <span className="category-tag">{idea.category}</span>
+
+        <span className="category-tag">{idea.niche}</span>
       </div>
       <div className="card-body">
         <div className="card-title-section">
@@ -25,7 +26,7 @@ const Card = ({ idea }) => {
         </div>
         <div className="card-author-info">
           <span>{idea.author}</span>
-          <span className="time-ago">{idea.time}</span>
+          <span className="time-ago">{idea.created_at}</span>
         </div>
         <p className="card-description">{idea.description}</p>
         <div className="card-stats">
